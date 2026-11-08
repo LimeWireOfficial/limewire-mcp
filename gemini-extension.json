@@ -1,0 +1,10 @@
+{
+  "name": "limewire",
+  "version": "0.2.0",
+  "description": "Hosted file storage for AI agents: upload, list, download, share by link, expire and scratch space - from Claude, Cursor, VS Code, Codex, Gemini CLI or any MCP client.",
+  "mcpServers": {
+    "limewire": {
+      "httpUrl": "https://mcp.limewire.com/mcp"
+    }
+  }
+}
