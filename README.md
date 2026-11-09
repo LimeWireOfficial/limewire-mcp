@@ -20,6 +20,7 @@ This repository holds only the client manifests. The server itself is hosted by 
 | Claude Desktop / claude.ai | Add from the [Connectors Directory](https://claude.ai/directory/connectors/limewire-agent-files) |
 | Cursor | `.cursor/mcp.json`: `{ "mcpServers": { "limewire": { "url": "https://mcp.limewire.com/mcp" } } }` |
 | VS Code | `{ "servers": { "limewire": { "type": "http", "url": "https://mcp.limewire.com/mcp" } } }`, or search `@mcp limewire` in Extensions |
+| Cline | MCP Servers → Remote Servers: URL `https://mcp.limewire.com/mcp`, transport **Streamable HTTP**; details in [`llms-install.md`](llms-install.md) |
 | Gemini CLI | `gemini extensions install https://github.com/LimeWireOfficial/limewire-mcp` |
 | Codex / any Agent Plugins client | this repository is an [Agent Plugin](https://agent-plugins.org): `plugin.json` + `mcp.json` |
 | Anything else | point a remote MCP client at `https://mcp.limewire.com/mcp` |
