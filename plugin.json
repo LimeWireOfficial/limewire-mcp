@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "limewire",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Hosted file storage for AI agents: upload, list, download, share by link, expire and scratch space - from Claude, Cursor, VS Code, Codex, Gemini CLI or any MCP client.",
   "author": {
     "name": "LimeWire",
@@ -25,7 +25,7 @@
       "interface": {
         "displayName": "LimeWire Agent Files",
         "shortDescription": "Store and share agent files",
-        "longDescription": "Hosted file storage for AI agents. Upload text or files your agent produced, list and download them later, keep scratch files between steps, and hand a result to a person with a short, revocable link. Results can be saved into your LimeWire account, where they appear next to your own uploads.\n\nWho it is for: anyone whose agent produces reports, exports, images or datasets that must outlive the chat or be passed on.\n\nLimits: the plugin only sees files uploaded through it under your connected LimeWire account; it has no access to your computer or other LimeWire files. Storage size, daily uploads, downloads and how long files are kept depend on your LimeWire plan (on the free plan files expire automatically). Share links are public to anyone who has them until they expire or are revoked.",
+        "longDescription": "Hosted file storage for AI agents. Upload text or files your agent produced, list and download them later, keep scratch files between steps, and hand a result to a person with a short, revocable link. Results can be saved into your LimeWire account, where they appear next to your own uploads.\n\nWho it is for: anyone whose agent produces reports, exports, images or datasets that must outlive the chat or be passed on.\n\nLimits: the plugin only sees files uploaded through it under your connected LimeWire account; it has no access to your computer or other LimeWire files. Storage space, daily uploads, downloads and how long files are kept follow the limits of your LimeWire account, and the plugin reports them on request. Share links are public to anyone who has them until they expire or are revoked.",
         "developerName": "LimeWire",
         "category": "Productivity",
         "capabilities": [
@@ -34,7 +34,7 @@
           "Create and revoke share links",
           "Scratch space between steps",
           "Save results to your LimeWire account",
-          "Check plan usage"
+          "Check storage usage"
         ],
         "websiteURL": "https://limewire.com/mcp",
         "supportURL": "https://help.limewire.com/hc/en-us",
@@ -76,7 +76,7 @@
               "expected_behavior": "Returns a https://limewire.com/d/a/<id> link that downloads the file, then revokes it; the link stops working."
             },
             {
-              "description": "Check plan usage",
+              "description": "Check storage usage",
               "prompt": "How much LimeWire storage and how many uploads do I have left today?",
               "tools_triggered": "files_usage",
               "expected_behavior": "Reports the plan name, bytes used and remaining, and uploads left today for the test account."
