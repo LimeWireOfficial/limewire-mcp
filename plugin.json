@@ -19,5 +19,90 @@
     "upload",
     "agents",
     "limewire"
-  ]
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "LimeWire Agent Files",
+        "shortDescription": "Store and share agent files",
+        "longDescription": "Hosted file storage for AI agents. Upload text or files your agent produced, list and download them later, keep scratch files between steps, and hand a result to a person with a short, revocable link. Results can be saved into your LimeWire account, where they appear next to your own uploads.\n\nWho it is for: anyone whose agent produces reports, exports, images or datasets that must outlive the chat or be passed on.\n\nLimits: the plugin only sees files uploaded through it under your connected LimeWire account; it has no access to your computer or other LimeWire files. Storage size, daily uploads, downloads and how long files are kept depend on your LimeWire plan (on the free plan files expire automatically). Share links are public to anyone who has them until they expire or are revoked.",
+        "developerName": "LimeWire",
+        "category": "Productivity",
+        "capabilities": [
+          "Upload files",
+          "List and download files",
+          "Create and revoke share links",
+          "Scratch space between steps",
+          "Save results to your LimeWire account",
+          "Check plan usage"
+        ],
+        "websiteURL": "https://limewire.com/mcp",
+        "supportURL": "https://help.limewire.com/hc/en-us",
+        "privacyPolicyURL": "https://limewire.com/privacy",
+        "termsOfServiceURL": "https://limewire.com/terms",
+        "defaultPrompt": [
+          "Save this report as a file and give me a link to share.",
+          "What files have I stored with LimeWire?",
+          "How much LimeWire storage do I have left?"
+        ],
+        "composerIcon": "./assets/logo.png",
+        "logo": "./assets/logo.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Store text as a file",
+              "prompt": "Save the text 'Quarterly numbers: 42' as reports/q3.txt in LimeWire.",
+              "tools_triggered": "files_upload",
+              "expected_behavior": "The file is stored and the assistant returns its agentfs:// address, size and content type."
+            },
+            {
+              "description": "List stored files",
+              "prompt": "List the files I have stored in LimeWire under reports.",
+              "tools_triggered": "files_list",
+              "expected_behavior": "Returns reports/q3.txt with its size and upload time; nothing outside the connected account is shown."
+            },
+            {
+              "description": "Read a file back",
+              "prompt": "Open reports/q3.txt from LimeWire and tell me what it says.",
+              "tools_triggered": "files_download",
+              "expected_behavior": "Returns the stored text 'Quarterly numbers: 42' unchanged."
+            },
+            {
+              "description": "Share and revoke a link",
+              "prompt": "Make a share link for reports/q3.txt valid for one hour, then revoke it.",
+              "tools_triggered": "files_share, files_share_revoke",
+              "expected_behavior": "Returns a https://limewire.com/d/a/<id> link that downloads the file, then revokes it; the link stops working."
+            },
+            {
+              "description": "Check plan usage",
+              "prompt": "How much LimeWire storage and how many uploads do I have left today?",
+              "tools_triggered": "files_usage",
+              "expected_behavior": "Reports the plan name, bytes used and remaining, and uploads left today for the test account."
+            }
+          ],
+          "negative": [
+            {
+              "description": "No access to the local computer",
+              "prompt": "Upload the file C:\\Users\\me\\Desktop\\taxes.pdf from my computer to LimeWire."
+            },
+            {
+              "description": "No access to other people's files",
+              "prompt": "Show me the files other LimeWire users have uploaded."
+            },
+            {
+              "description": "Not a payment tool",
+              "prompt": "Upgrade my LimeWire plan and charge my card."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "The plugin does not sell anything or take payments. It can state plan limits returned by the server."
+      },
+      "publication": {
+        "release_notes": "First release: upload, list, download, share links, scratch space, retention and saving results into the LimeWire account."
+      }
+    }
+  }
 }
