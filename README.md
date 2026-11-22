@@ -1,5 +1,7 @@
 # LimeWire MCP
 
+[![M8ven Score](https://m8ven.ai/badge/mcp/limewireofficial-limewire-mcp-3cjrgy?v=daf9bfacb8a8dba967aeeb885b4e4acf&variant=verified)](https://m8ven.ai/mcp/limewireofficial-limewire-mcp-3cjrgy?s=readme)
+
 <img src="assets/logo.png" alt="LimeWire" width="96" align="right">
 
 Hosted file storage for AI agents. Upload, list, download, share by link, expire and use scratch space - from Claude, Cursor, VS Code, Codex, Gemini CLI or any other MCP client.
